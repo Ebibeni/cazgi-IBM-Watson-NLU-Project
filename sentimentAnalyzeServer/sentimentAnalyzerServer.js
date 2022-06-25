@@ -64,6 +64,9 @@ app.get("/url/emotion", (req,res) => {
       return res.send("Could not do desired operation "+err);
       });
 });
+
+
+//The endpoint for the webserver ending with /url/sentiment
 app.get("/url/sentiment", (req,res) => {
     let urlToAnalyze = req.query.url
     const analyzeParams = 
@@ -89,6 +92,8 @@ app.get("/url/sentiment", (req,res) => {
         return res.send("Could not do desired operation "+err);
     });
 });
+
+//The endpoint for the webserver ending with /text/emotion
 app.get("/text/emotion", (req,res) => {
     let textToAnalyze = req.query.text
     const analyzeParams = 
@@ -114,6 +119,7 @@ app.get("/text/emotion", (req,res) => {
         return res.send("Could not do desired operation "+err);
     });
 });
+
 app.get("/text/sentiment", (req,res) => {
     let textToAnalyze = req.query.text
     const analyzeParams = 
@@ -140,21 +146,6 @@ app.get("/text/sentiment", (req,res) => {
     });
 });
 
-//The endpoint for the webserver ending with /url/sentiment
-app.get("/url/sentiment", (req,res) => {
-    return res.send("url sentiment for "+req.query.url);
-});
-
-//The endpoint for the webserver ending with /text/emotion
-app.get("/text/emotion", (req,res) => {
-    return res.send({"happy":"10","sad":"90"});
-});
-
-app.get("/text/sentiment", (req,res) => {
-    return res.send("text sentiment for "+req.query.text);
-});
-
 let server = app.listen(8080, () => {
     console.log('Listening', server.address().port)
 })
-
